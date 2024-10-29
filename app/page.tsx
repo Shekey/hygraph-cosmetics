@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
 import { draftMode } from "next/headers";
-import type { PageQuery } from "@/gql/graphql";
 import { getPage } from "@/queries/getPage";
 import ComponentRenderer from "@/components/ComponentRenderer";
-
-export const runtime = "edge";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { isEnabled } = draftMode();
 
-  const { page }: PageQuery = await getPage(
+  const { page } = await getPage(
     "home" as string,
     isEnabled ? "DRAFT" : "PUBLISHED"
   );
@@ -33,10 +30,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Home() {
   const { isEnabled } = draftMode();
 
-  const { page }: PageQuery = await getPage(
-    "home",
-    isEnabled ? "DRAFT" : "PUBLISHED"
-  );
+  const { page } = await getPage("home", isEnabled ? "DRAFT" : "PUBLISHED");
 
   return (
     <main className="max-w-screen-2xl mx-auto">

@@ -1,11 +1,8 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { draftMode } from "next/headers";
-import type { PdpQuery } from "@/gql/graphql";
 import { getPdp } from "@/queries/getPdp";
 import ComponentRenderer from "@/components/ComponentRenderer";
 import ProductDetail from "@/components/ProductDetail";
-
-export const runtime = "edge";
 
 type Props = {
   params: { product: string };
@@ -16,23 +13,23 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const { isEnabled } = draftMode();
-  const { pdp }: PdpQuery = await getPdp(
+  const { data: pdp } = await getPdp(
     params.product as string,
     isEnabled ? "DRAFT" : "PUBLISHED"
   );
 
   return {
-    title: isEnabled ? `⚡️ ${pdp?.title}` : pdp?.title || "",
-    description: pdp?.description || "",
+    title: isEnabled ? `⚡️ ${pdp?.title}` : pdp?.title,
+    description: pdp?.description,
     openGraph: {
       type: "website",
-      title: pdp?.title || "",
-      images: [pdp?.ogImage?.url || ""],
+      title: pdp?.title,
+      images: [pdp?.ogImage],
     },
     twitter: {
       card: "summary_large_image",
-      title: pdp?.title || "",
-      description: pdp?.description || "",
+      title: pdp?.title,
+      description: pdp?.description,
     },
   };
 }
@@ -43,16 +40,16 @@ export default async function Home({
   params: { product: string };
 }) {
   const { isEnabled } = draftMode();
-  const { pdp }: PdpQuery = await getPdp(
+  const { data } = await getPdp(
     params.product as string,
     isEnabled ? "DRAFT" : "PUBLISHED"
   );
   return (
     <main className="max-w-screen-2xl mx-auto">
-      <ProductDetail product={pdp?.product} />
+      {data && <ProductDetail product={data} />}
 
       <section className="mb-12">
-        <ComponentRenderer data={pdp?.components} />
+        <ComponentRenderer data={data?.components} />
       </section>
     </main>
   );

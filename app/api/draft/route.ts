@@ -2,9 +2,7 @@ import { draftMode } from "next/headers";
 import { redirect } from "next/navigation";
 import { getPage } from "@/queries/getPage";
 import { getPdp } from "@/queries/getPdp";
-import type { PageQuery, PdpQuery } from "@/gql/graphql";
-
-export const runtime = "edge";
+import type { PageQuery } from "@/gql/graphql";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -21,8 +19,8 @@ export async function GET(request: Request) {
     const { page }: PageQuery = await getPage(slug, "PUBLISHED");
     finalPage = page;
   } else {
-    const { pdp }: PdpQuery = await getPdp(slug, "PUBLISHED");
-    finalPage = pdp;
+    const { data } = await getPdp(slug, "PUBLISHED");
+    finalPage = data;
   }
 
   if (!finalPage || !finalPage.slug) {

@@ -10,12 +10,10 @@ interface Props {
     shortDescription: string;
     description: string;
     stock: string;
-    images: [
-      {
-        alt: string;
-        url: string;
-      }
-    ];
+    images?: {
+      alt: string;
+      url: string;
+    }[];
   };
 }
 
@@ -23,7 +21,7 @@ export default function ProductDetail({ product }: Props) {
   return (
     <section className="bg-light product-detail pb-12">
       <div className="grid grid-cols-2">
-        {product.images.map((img: any) => {
+        {product?.images?.map((img: any) => {
           return (
             <Image
               src={img.url}
