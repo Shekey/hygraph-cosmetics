@@ -5,6 +5,8 @@ import { getPdp } from "@/queries/getPdp";
 import ComponentRenderer from "@/components/ComponentRenderer";
 import ProductDetail from "@/components/ProductDetail";
 
+export const runtime = "edge";
+
 type Props = {
   params: { product: string };
 };

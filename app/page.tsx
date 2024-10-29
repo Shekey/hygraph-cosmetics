@@ -4,6 +4,8 @@ import type { PageQuery } from "@/gql/graphql";
 import { getPage } from "@/queries/getPage";
 import ComponentRenderer from "@/components/ComponentRenderer";
 
+export const runtime = "edge";
+
 export async function generateMetadata(): Promise<Metadata> {
   const { isEnabled } = draftMode();
 
