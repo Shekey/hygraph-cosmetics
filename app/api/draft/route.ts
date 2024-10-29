@@ -4,6 +4,8 @@ import { getPage } from "@/queries/getPage";
 import { getPdp } from "@/queries/getPdp";
 import type { PageQuery } from "@/gql/graphql";
 
+export const runtime = "edge";
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const secret = searchParams.get("secret");
