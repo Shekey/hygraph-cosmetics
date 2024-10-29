@@ -21,6 +21,7 @@
 *.pem
 
 .env
+.env.example
 
 # debug
 npm-debug.log*
