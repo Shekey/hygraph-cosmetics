@@ -38,9 +38,6 @@ export default function GlobalFooter() {
           <Link href="/pdp/face-cream">face cream</Link>
           <Link href="/pdp/eye-contour">eye contour</Link>
           <Link href="/pdp/bundle">skncre bundle</Link>
-          <Link href={`/api/draft?slug=${slug}&secret=MY_SECRET_TOKEN`}>
-            Draft mode
-          </Link>
         </nav>
       </div>
     </footer>
