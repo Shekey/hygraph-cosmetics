@@ -1,6 +1,6 @@
-import { request } from "graphql-request";
-import { graphql } from "../gql"
 import type { Stage } from "../gql/graphql";
+import { graphql } from "../gql";
+import { HygraphClient } from "@/client";
 
 const query = graphql(`
   query Page($slug: String!, $stage: Stage! = PUBLISHED) {
@@ -95,21 +95,16 @@ const query = graphql(`
         }
       }
     }
-  
   }
 `);
 
 export async function getPage(slug: string, stage: "PUBLISHED" | "DRAFT") {
   const variables = {
     slug: slug || "home",
-    stage: stage as Stage || "PUBLISHED" as Stage
+    stage: (stage as Stage) || ("PUBLISHED" as Stage),
   };
 
-  const data = await request(
-    process.env.NEXT_HYGRAPH_ENDPOINT as string,
-    query,
-    variables
-  );
+  const data = await HygraphClient.request(query, variables);
 
   return data;
 }

@@ -3,6 +3,8 @@ import { draftMode } from "next/headers";
 import { getPage } from "@/queries/getPage";
 import ComponentRenderer from "@/components/ComponentRenderer";
 
+export const runtime = "edge";
+
 export async function generateMetadata(): Promise<Metadata> {
   const { isEnabled } = draftMode();
 

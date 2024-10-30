@@ -1,6 +1,6 @@
-import { request } from "graphql-request";
 import { graphql } from "../gql";
 import type { Stage } from "../gql/graphql";
+import { HygraphClient } from "@/client";
 
 const query = graphql(`
   query Pdp($slug: String!, $stage: Stage! = PUBLISHED) {
@@ -87,11 +87,7 @@ export async function getPdp(slug: string, stage: "PUBLISHED" | "DRAFT") {
     stage: (stage as Stage) || ("PUBLISHED" as Stage),
   };
 
-  const data = await request(
-    process.env.NEXT_HYGRAPH_ENDPOINT as string,
-    query,
-    variables
-  );
+  const data = await HygraphClient.request(query, variables);
 
   const ProductResource = Object.assign(
     {},
