@@ -1,8 +1,7 @@
 import { draftMode } from "next/headers";
 import { redirect } from "next/navigation";
-import { getPage } from "@/queries/getPage";
-import { getPdp } from "@/queries/getPdp";
-import type { PageQuery } from "@/gql/graphql";
+import { getPage } from "@/requests/getPage";
+import { getPdp } from "@/requests/getPdp";
 
 export const runtime = "edge";
 
@@ -18,7 +17,7 @@ export async function GET(request: Request) {
   let finalPage = null;
 
   if (slug === "home") {
-    const { page }: PageQuery = await getPage(slug, "PUBLISHED");
+    const { page } = await getPage(slug, "PUBLISHED");
     finalPage = page;
   } else {
     const { data } = await getPdp(slug, "PUBLISHED");

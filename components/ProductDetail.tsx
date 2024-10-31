@@ -19,7 +19,7 @@ interface Props {
 
 export default function ProductDetail({ product }: Props) {
   return (
-    <section className="bg-light product-detail pb-12">
+    <section className="bg-light product-detail pb-12" key={product.id}>
       <div className="grid grid-cols-2">
         {product?.images?.map((img: any) => {
           return (

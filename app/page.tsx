@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { draftMode } from "next/headers";
-import { getPage } from "@/queries/getPage";
+import { getPage } from "@/requests/getPage";
 import ComponentRenderer from "@/components/ComponentRenderer";
 
 export const runtime = "edge";

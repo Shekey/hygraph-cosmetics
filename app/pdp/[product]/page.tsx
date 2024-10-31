@@ -1,6 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { draftMode } from "next/headers";
-import { getPdp } from "@/queries/getPdp";
+import { getPdp } from "@/requests/getPdp";
 import ComponentRenderer from "@/components/ComponentRenderer";
 import ProductDetail from "@/components/ProductDetail";
 
@@ -19,6 +19,13 @@ export async function generateMetadata(
     params.product as string,
     isEnabled ? "DRAFT" : "PUBLISHED"
   );
+
+  if (!pdp) {
+    return {
+      title: "Product not found",
+      description: "Product not found",
+    };
+  }
 
   return {
     title: isEnabled ? `⚡️ ${pdp?.title}` : pdp?.title,
