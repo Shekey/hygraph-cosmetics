@@ -1,0 +1,65 @@
+{
+  "pdp": {
+    "__typename": "Pdp",
+    "id": "clpv55wbgwmbo09w2vvsxoum1",
+    "slug": "face-cream",
+    "title": "Face Cream",
+    "description": "Discover the reactivating, cooling night cream to stimulate the skin overnight so you wake up with a rosy glow.",
+    "ogImage": {
+      "__typename": "Asset",
+      "url": "https://eu-west-2.graphassets.com/cm2aj0eph00a001tb1vj9cpfl/5ueUkemRIegiLlZdSXBk"
+    },
+    "components": [
+      {
+        "__typename": "Tutorial",
+        "id": "clpv55wbgwmbp09w2p28b9bwc",
+        "title": "How to Apply",
+        "image": {
+          "__typename": "Asset",
+          "url": "https://eu-west-2.graphassets.com/cm2aj0eph00a001tb1vj9cpfl/XFH6FiI4RG1x8iq7yNNB"
+        },
+        "items": [
+          {
+            "__typename": "TutorialItem",
+            "text": "apply a little of the product to your index finger."
+          },
+          {
+            "__typename": "TutorialItem",
+            "text": "apply small amounts to the lower part of the eye."
+          },
+          {
+            "__typename": "TutorialItem",
+            "text": "spread the product from the tear duct to the outside following the eye contour."
+          },
+          {
+            "__typename": "TutorialItem",
+            "text": "to eliminate small wrinkles, work from the outside of the eye to the tear duct."
+          }
+        ]
+      }
+    ],
+    "product": {
+      "__typename": "FederateThisSkincre_Product",
+      "id": 2,
+      "slug": "face-cream",
+      "name": "face cream",
+      "price": 355,
+      "ingredients": "aqua, glycerin, butylene glycol, hydrogenated coco-glycerides, glyceryl stearate se, caprylic/capric triglyceride, dicaprylyl ether, phenyl trimethicone",
+      "shortDescription": "Discover the reactivating, cooling night cream to stimulate the skin overnight so you wake up with a rosy glow.",
+      "description": "Light and evanescent texture, with a fresh and pleasant touch. The basic formula of two main ingredients known for a long time for their functional properties: Pure Helicine and Hyaluronic Acid. Suitable for all skin types: dry, combination, and oily. Snail slime: Nourishing, regenerating, and antioxidant properties. It also has film-forming properties such as proteins, mucopolysaccharides, allantoin, and glycolic acid; that make the skin soft, healthy, hydrated, smooth, smooth, silky. Prevents the formation of skin spots (light and dark), pimples, stretch marks, and scars, and prevents the accumulation of blemishes.",
+      "stock": 6,
+      "images": [
+        {
+          "__typename": "FederateThisSkincre_Image",
+          "alt": "Face cream Image 1",
+          "url": "https://federate-this-astro.vercel.app/skncre/face_cream_1.jpg"
+        },
+        {
+          "__typename": "FederateThisSkincre_Image",
+          "alt": "Face cream Image 2",
+          "url": "https://federate-this-astro.vercel.app/skncre/face_cream_2.png"
+        }
+      ]
+    }
+  }
+}

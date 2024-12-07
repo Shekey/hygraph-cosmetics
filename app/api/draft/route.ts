@@ -1,7 +1,9 @@
 import { draftMode } from "next/headers";
 import { redirect } from "next/navigation";
-import { getPage } from "@/requests/getPage";
-import { getPdp } from "@/requests/getPdp";
+import { getPage } from "@/server/infrastructure/repositories/cms-content/requests/getPage";
+import { getPdp } from "@/server/infrastructure/repositories/cms-content/requests/getPdp";
+import { PageController } from "@/server/application/controller/page/getPage.controller";
+import { PDPController } from "@/server/application/controller/pdp/getPdp.controller";
 
 export const runtime = "edge";
 
@@ -17,10 +19,16 @@ export async function GET(request: Request) {
   let finalPage = null;
 
   if (slug === "home") {
-    const { page } = await getPage(slug, "PUBLISHED");
+    const { data: page, error } = await PageController.getData({
+      slug,
+      stage: "PUBLISHED",
+    });
     finalPage = page;
   } else {
-    const { data } = await getPdp(slug, "PUBLISHED");
+    const { data } = await PDPController.getData({
+      slug,
+      stage: "PUBLISHED",
+    });
     finalPage = data;
   }
 

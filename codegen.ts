@@ -5,14 +5,14 @@ const config: CodegenConfig = {
     "https://eu-west-2.cdn.hygraph.com/content/cm2aiz0o301uw07uqqvo5irxw/master",
   documents: ["queries/**/*"],
   generates: {
-    "codegen/generated/graphql.ts": {
+    "infrastructure/repositories/hygraph/codegen/generated/graphql.ts": {
       preset: "import-types",
       presetConfig: {
         typesPath: "./types",
       },
       plugins: ["typescript-react-apollo"],
     },
-    "codegen/generated/types.ts": {
+    "infrastructure/repositories/hygraph/codegen/generated/types.ts": {
       plugins: ["typescript", "typescript-operations"],
     },
   },

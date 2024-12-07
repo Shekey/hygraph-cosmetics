@@ -1,13 +1,9 @@
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import GlobalHeader from "@/components/GlobalHeader";
-import GlobalFooter from "@/components/GlobalFooter";
+import GlobalHeader from "@/app/(ui)/GlobalHeader";
+import GlobalFooter from "@/app/(ui)/GlobalFooter";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-plus-jakarta-sans",
-});
 
 export default function RootLayout({
   children,

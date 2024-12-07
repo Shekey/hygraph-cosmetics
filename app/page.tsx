@@ -1,38 +1,38 @@
 import type { Metadata } from "next";
 import { draftMode } from "next/headers";
-import { getPage } from "@/requests/getPage";
-import ComponentRenderer from "@/components/ComponentRenderer";
+import ComponentRenderer from "@/app/(ui)/ComponentRenderer";
+import { PageController } from "@/server/application/controller/page/getPage.controller";
 
 export const runtime = "edge";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { isEnabled } = draftMode();
 
-  const { page } = await getPage(
-    "home" as string,
-    isEnabled ? "DRAFT" : "PUBLISHED"
-  );
-
-  return {
-    title: isEnabled ? `⚡️ ${page?.title}` : page?.title || "",
-    description: page?.description || "",
-    openGraph: {
-      type: "website",
-      title: page?.title || "",
-      images: [page?.ogImage?.url || ""],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: page?.title || "",
-      description: page?.description || "",
-    },
-  };
+  return await PageController.getMetaData({
+    isEnabled,
+    slug: "home",
+    stage: isEnabled ? "DRAFT" : "PUBLISHED",
+  });
 }
 
 export default async function Home() {
   const { isEnabled } = draftMode();
+  const { data: page, error } = await PageController.getData({
+    slug: "home",
+    stage: isEnabled ? "DRAFT" : "PUBLISHED",
+  });
 
-  const { page } = await getPage("home", isEnabled ? "DRAFT" : "PUBLISHED");
+  if (error) {
+    console.error(error?.cause);
+
+    return (
+      <main className="max-w-screen-2xl mx-auto">
+        <section className="mb-12">
+          <h1>Page not found</h1>
+        </section>
+      </main>
+    );
+  }
 
   return (
     <main className="max-w-screen-2xl mx-auto">

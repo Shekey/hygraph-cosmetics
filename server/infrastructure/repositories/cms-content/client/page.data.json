@@ -1,0 +1,25 @@
+{
+  "page": {
+    "__typename": "Page",
+    "id": "clou5hfhaoblu0bw2meqshsmh",
+    "slug": "home",
+    "title": "Home",
+    "description": "Home page for Hygraph Cosmetics starter",
+    "ogImage": {
+      "__typename": "Asset",
+      "url": "https://eu-west-2.graphassets.com/cm2aj0eph00a001tb1vj9cpfl/5kQ0UPjpT3u92fNYqttY"
+    },
+    "components": [
+      {
+        "__typename": "Hero",
+        "id": "clou5hfhaoblv0bw2souiwqm8",
+        "description": "skncre offers the best of the best, just for your skin.",
+        "image": {
+          "__typename": "Asset",
+          "url": "https://eu-west-2.graphassets.com/cm2aj0eph00a001tb1vj9cpfl/er8qYryQQK27lOifW9FQ"
+        },
+        "title": "rediscover your skin"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1 @@
+export type CONTENT_STAGES = "DRAFT" | "PUBLISHED";

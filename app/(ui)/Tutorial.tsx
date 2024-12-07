@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ComponentRenderer from "@/components/ComponentRenderer";
+import ComponentRenderer from "@/app/(ui)/ComponentRenderer";
 
 interface Props {
   __typename: string;
