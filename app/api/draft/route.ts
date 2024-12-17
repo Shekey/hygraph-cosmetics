@@ -1,7 +1,5 @@
 import { draftMode } from "next/headers";
 import { redirect } from "next/navigation";
-import { getPage } from "@/server/infrastructure/repositories/cms-content/requests/getPage";
-import { getPdp } from "@/server/infrastructure/repositories/cms-content/requests/getPdp";
 import { PageController } from "@/server/application/controller/page/getPage.controller";
 import { PDPController } from "@/server/application/controller/pdp/getPdp.controller";
 
